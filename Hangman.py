@@ -19,16 +19,16 @@ def clear():
     else:
         _ = system("clear")
 
-
+# TODO This can wait until we get the user word input sorted out
 def game():
     pass
 
-
+# TODO Develope this!
 def parse_input(words):
     pass
 
 
-
+# TODO Focus on making this work
 def add_words(c_words):
     file = open("custom_words.txt", "a+")
     while True:
@@ -98,4 +98,6 @@ easy_words = "Make a get easy words function that pulls words from a file"
 medium_words = "Make a get medium words function that pulls words from a file"
 hard_words = "Make a get hard words function that pulls words from a file"
 custom_words = "Make a get custom words fucntion that pulls words from a file" 
+states = States.stages
 init()
+print(states)
