@@ -1,7 +1,7 @@
 #!/bin/python3
 # Console Hangman
 # Created by: Nicholas Lueth
-# Last edited: 3/4/2020
+# Last edited: 3/5/2020
 
 from random import randint
 from os import system, name
@@ -23,9 +23,29 @@ def clear():
 def game():
     pass
 
+# TODO Load easy words from a text file
+def get_easy_words():
+    pass
+
+# TODO Load medium words from a text file
+def get_medium_words():
+    pass
+
+# TODO Load hard words from a text file
+def get_hard_words():
+    pass
+
+# TODO Load custom words prior to addition
+def get_custom_words():
+    pass
+
 # TODO Develope this!
 def parse_input(words):
-    pass
+    parsed_input = ""
+    for i in range(len(words)):
+        if words[i].isalpha():
+            parsed_input += words[i]
+    return parsed_input
 
 
 # TODO Focus on making this work
@@ -52,6 +72,10 @@ def add_words(c_words):
         elif choice == "n":
             main_menu()
             break
+        else:
+            print("That value is not a valid option...")
+            sleep(1.5)
+
 
 
 def open_twitter():
@@ -100,4 +124,3 @@ hard_words = "Make a get hard words function that pulls words from a file"
 custom_words = "Make a get custom words fucntion that pulls words from a file" 
 states = States.stages
 init()
-print(states)
