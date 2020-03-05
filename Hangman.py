@@ -8,7 +8,7 @@ from os import system, name
 from time import sleep
 import webbrowser
 import States
-# import Game
+import Game
 
 
 # This function clears the terminal screen
@@ -18,11 +18,11 @@ def clear():
     else:
         _ = system("clear")
 
-# TODO This can wait until we get the user word input sorted out
-def game():
-    pass
 
-# TODO Load easy words from a text file
+def game():
+    Game.main()
+
+
 def get_easy_words():
     easy_words = []
     file = open("EasyWords.txt", "a+")
@@ -32,7 +32,7 @@ def get_easy_words():
             easy_words.append(word[:-1])
     return easy_words
 
-# TODO Load medium words from a text file
+
 def get_medium_words():
     medium_words = []
     file = open("MediumWords.txt", "a+")
@@ -42,7 +42,7 @@ def get_medium_words():
             medium_words.append(word[:-1])
     return medium_words
 
-# TODO Load hard words from a text file
+
 def get_hard_words():
     hard_words = []
     file = open("HardWords.txt", "a+")
@@ -52,7 +52,7 @@ def get_hard_words():
             hard_words.append(word[:-1])
     return hard_words 
 
-# TODO Load custom words prior to addition
+
 def get_custom_words():
     custom_words = []
     file = open("CustomWords.txt", "a+")
@@ -71,7 +71,6 @@ def check_letters(words):
     return letters
 
 
-# TODO Focus on making this work
 def add_words(c_words):
     file = open("CustomWords.txt", "a+")
     while True:
@@ -125,7 +124,6 @@ def main_menu():
         else:
             if choice == 1:
                 game()
-                break
             elif choice == 2:
                 add_words(custom_words)
                 break
@@ -150,7 +148,3 @@ hard_words = get_hard_words()
 custom_words = get_custom_words()
 states = States.stages
 init()
-print("Easy:", easy_words)
-print("Medium:", medium_words)
-print("Hard:", hard_words)
-print("Custom:", custom_words)
