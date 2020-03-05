@@ -8,8 +8,7 @@ from os import system, name
 from time import sleep
 import webbrowser
 import States
-
-
+# import Game
 
 
 # This function clears the terminal screen
@@ -25,27 +24,51 @@ def game():
 
 # TODO Load easy words from a text file
 def get_easy_words():
-    pass
+    easy_words = []
+    file = open("EasyWords.txt", "a+")
+    file.close()
+    with open("EasyWords.txt") as word_file:
+        for word in word_file:
+            easy_words.append(word[:-1])
+    return easy_words
 
 # TODO Load medium words from a text file
 def get_medium_words():
-    pass
+    medium_words = []
+    file = open("MediumWords.txt", "a+")
+    file.close()
+    with open("MediumWords.txt") as word_file:
+        for word in word_file:
+            medium_words.append(word[:-1])
+    return medium_words
 
 # TODO Load hard words from a text file
 def get_hard_words():
-    pass
+    hard_words = []
+    file = open("HardWords.txt", "a+")
+    file.close()
+    with open("HardWords.txt") as word_file:
+        for word in word_file:
+            hard_words.append(word[:-1])
+    return hard_words 
 
 # TODO Load custom words prior to addition
 def get_custom_words():
-    pass
+    custom_words = []
+    file = open("CustomWords.txt", "a+")
+    file.close()
+    with open("CustomWords.txt") as word_file:
+        for word in word_file:
+            custom_words.append(word[:-1])
+    return custom_words 
 
-# TODO Develope this!
-def parse_input(words):
-    parsed_input = ""
+# Parses for letterless input
+def check_letters(words):
+    letters = ""
     for i in range(len(words)):
         if words[i].isalpha():
-            parsed_input += words[i]
-    return parsed_input
+            letters += words[i]
+    return letters
 
 
 # TODO Focus on making this work
@@ -53,8 +76,8 @@ def add_words(c_words):
     file = open("CustomWords.txt", "a+")
     while True:
         clear()
-        new_word = input("New word(s): ").lower()
-        if len(new_word) < 1 or len(parse_input(new_word)) < 1:
+        new_word = input("New word(s): ").lower().strip()
+        if len(new_word) < 1 or len(check_letters(new_word)) < 1:
             print("BAD INPUT!")
             sleep(2)
         elif new_word in c_words:
@@ -64,10 +87,11 @@ def add_words(c_words):
             break
     file.write(new_word + "\n")
     file.close()
+    custom_words.append(new_word)
     while True:
         choice = input("Would you like to add more words?[y/n]: ").lower()
         if choice == "y":
-            add_words()
+            add_words(custom_words)
             break
         elif choice == "n":
             main_menu()
@@ -110,6 +134,8 @@ def main_menu():
                 break
             elif choice == 4:
                 exit(0)
+            elif choice == 5:
+                break
             else:
                 print("That value is not a valid option...")
                 sleep(1.5)
@@ -118,9 +144,13 @@ def main_menu():
 def init():
     main_menu()
 
-easy_words = "Make a get easy words function that pulls words from a file"
-medium_words = "Make a get medium words function that pulls words from a file"
-hard_words = "Make a get hard words function that pulls words from a file"
-custom_words = "Make a get custom words fucntion that pulls words from a file" 
+easy_words = get_easy_words()
+medium_words = get_medium_words()
+hard_words = get_hard_words()
+custom_words = get_custom_words()
 states = States.stages
 init()
+print("Easy:", easy_words)
+print("Medium:", medium_words)
+print("Hard:", hard_words)
+print("Custom:", custom_words)
