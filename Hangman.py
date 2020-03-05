@@ -50,7 +50,7 @@ def parse_input(words):
 
 # TODO Focus on making this work
 def add_words(c_words):
-    file = open("custom_words.txt", "a+")
+    file = open("CustomWords.txt", "a+")
     while True:
         clear()
         new_word = input("New word(s): ").lower()
