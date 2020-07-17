@@ -1,66 +1,18 @@
 #!/bin/python3
 # Console Hangman
 # Created by: Nicholas Lueth
-# Last edited: 3/5/2020
+# Last edited: 7/17/2020
 
 from random import randint
 from os import system, name
 from time import sleep
-import webbrowser
-import States
 import Game
-
-
-# This function clears the terminal screen
-def clear():
-    if name == "nt":
-        _ = system("cls")
-    else:
-        _ = system("clear")
+import webbrowser
 
 
 def game():
     Game.main()
 
-
-def get_easy_words():
-    easy_words = []
-    file = open("EasyWords.txt", "a+")
-    file.close()
-    with open("EasyWords.txt") as word_file:
-        for word in word_file:
-            easy_words.append(word[:-1])
-    return easy_words
-
-
-def get_medium_words():
-    medium_words = []
-    file = open("MediumWords.txt", "a+")
-    file.close()
-    with open("MediumWords.txt") as word_file:
-        for word in word_file:
-            medium_words.append(word[:-1])
-    return medium_words
-
-
-def get_hard_words():
-    hard_words = []
-    file = open("HardWords.txt", "a+")
-    file.close()
-    with open("HardWords.txt") as word_file:
-        for word in word_file:
-            hard_words.append(word[:-1])
-    return hard_words 
-
-
-def get_custom_words():
-    custom_words = []
-    file = open("CustomWords.txt", "a+")
-    file.close()
-    with open("CustomWords.txt") as word_file:
-        for word in word_file:
-            custom_words.append(word[:-1])
-    return custom_words 
 
 # Parses for letterless input
 def check_letters(words):
@@ -74,7 +26,7 @@ def check_letters(words):
 def add_words(c_words):
     file = open("CustomWords.txt", "a+")
     while True:
-        clear()
+        Game.clear()
         new_word = input("New word(s): ").lower().strip()
         if len(new_word) < 1 or len(check_letters(new_word)) < 1:
             print("BAD INPUT!")
@@ -109,16 +61,17 @@ def open_twitter():
     input()
     main_menu()
 
+
 # Main menu
 def main_menu():
     while True:
-        clear()
+        Game.clear()
         print("WELCOME TO HANGMAN!\nCreated by: Nick Lueth")
         print("1. Play\n2. Add custom words or sentences\n3. About the author\n4. Quit")
         try:
             choice = int(input("Choice: "))
         except ValueError:
-            clear()
+            Game.clear()
             print("INVALID OPTION!\nPlease type a number.")
             input("PRESS ENTER TO CONTINUE...")
         else:
@@ -132,8 +85,6 @@ def main_menu():
                 break
             elif choice == 4:
                 exit(0)
-            elif choice == 5:
-                break
             else:
                 print("That value is not a valid option...")
                 sleep(1.5)
@@ -142,9 +93,8 @@ def main_menu():
 def init():
     main_menu()
 
-easy_words = get_easy_words()
-medium_words = get_medium_words()
-hard_words = get_hard_words()
-custom_words = get_custom_words()
-states = States.stages
+easy_words = Game.get_easy_words()
+medium_words = Game.get_medium_words()
+hard_words = Game.get_hard_words()
+custom_words = Game.get_custom_words()
 init()
