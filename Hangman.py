@@ -1,7 +1,7 @@
 #!/bin/python3
 # Console Hangman
 # Created by: Nicholas Lueth
-# Last edited: 7/17/2020
+# Last edited: 7/20/2020
 
 from random import randint
 from os import system, name

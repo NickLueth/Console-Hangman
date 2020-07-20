@@ -1,7 +1,7 @@
 #!/bin/python3
 # Game mechanisms file
 # Created by: Nicholas Lueth
-# Last edited: 7/17/2020
+# Last edited: 7/20/2020
 
 import random
 import States
@@ -9,8 +9,39 @@ from os import system, name
 from time import sleep
 
 
-def turn():
-    pass
+def turn(word, tries, guessed_letters):
+    clear()
+    print(States.stages[tries])
+    check_word(word, guessed_letters)
+    guess = input("Guess a letter: ")
+    if guess.isalpha():
+        guess = guess[0].lower()
+    clear()
+    if guess in word and not guess in guessed_letters:
+        print(guess.upper(), "is in the word(s)!")
+        guessed_letters.append(guess)
+    elif not guess in word  and not guess in guessed_letters:
+        print(guess.upper(), "is NOT in the word(s)!")
+        tries += 1
+    else:
+        print("You already said that letter!")
+
+
+def check_word(word, guessed_letters):
+    for letter in range(len(word)):
+        if word[letter] == " ":
+            print(" ", end=" ")
+        elif not word[letter].isalpha():
+            print(word[letter], end=" ")
+        elif not word[letter] in guessed_letters:
+            print("_", end=" ")
+        else:
+            print(word[letter], end=" ")
+    print()
+    print("Guessed letters: ", end="")
+    for i in range(len(guessed_letters)):
+        print(guessed_letters[i], end=" ")
+    print("\n" * 2)
 
 
 def clear():
@@ -65,19 +96,19 @@ def get_word(level):
     if level == 1:
         words = get_easy_words()
         word = words[random.randint(0, len(words)-1)]
-        print(word)
+        return word
     elif level == 2:
         words = get_medium_words()
         word = words[random.randint(0, len(words)-1)]
-        print(word)
+        return word
     elif level == 3:
         words = get_hard_words()
         word = words[random.randint(0, len(words)-1)]
-        print(word)
+        return word
     elif level == 4:
         words = get_custom_words()
         word = words[random.randint(0, len(words)-1)]
-        print(word)
+        return word
 
 
 def level_select():
@@ -118,6 +149,6 @@ def main():
             break
         word = get_word(level)
         while True:
-            turn(word, tries)
+            turn(word, tries, guessed_letters)
             if test_win():
                 break
