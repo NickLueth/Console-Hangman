@@ -1,7 +1,7 @@
 #!/bin/python3
 # Game mechanisms file
 # Created by: Nicholas Lueth
-# Last edited: 7/20/2020
+# Last edited: 8/3/2020
 
 import random
 import States
@@ -9,25 +9,38 @@ from os import system, name
 from time import sleep
 
 
-def turn(word, tries, guessed_letters):
+def turn(word, guessed_letters):
+    global tries
+    word_state(word, guessed_letters)
+    while True:
+        guess = input("Guess a letter: ")
+        if len(guess) > 0 and guess.isalpha():
+            break
+        else:
+            clear()
+            print("\"" + guess + "\"", "is not a letter. Please try again.")
+            input("[Press enter to try again...]")
+            clear()
+            print(States.stages[tries])
+            word_state(word, guessed_letters)
     clear()
-    print(States.stages[tries])
-    check_word(word, guessed_letters)
-    guess = input("Guess a letter: ")
     if guess.isalpha():
         guess = guess[0].lower()
-    clear()
+    else:
+        print("\"" + guess + "\"", "is not a letter. Please try again.")
     if guess in word and not guess in guessed_letters:
         print(guess.upper(), "is in the word(s)!")
         guessed_letters.append(guess)
     elif not guess in word  and not guess in guessed_letters:
         print(guess.upper(), "is NOT in the word(s)!")
+        guessed_letters.append(guess)
         tries += 1
     else:
         print("You already said that letter!")
+    print(States.stages[tries])
 
 
-def check_word(word, guessed_letters):
+def word_state(word, guessed_letters):
     for letter in range(len(word)):
         if word[letter] == " ":
             print(" ", end=" ")
@@ -129,26 +142,41 @@ def level_select():
                 sleep(1.5)
 
 
-# TODO Test to see if win or lose
-def test_win():
-    pass
-
-
-# TODO Displaying the word as the game goes on
-def word_state(tries):
-    pass
-#    return States.stages[tries]
+def test_win(word, letters):
+    global tries
+    if tries >= 8:
+        print("YOU LOSE!\nThe word(s) was:", word)
+        input("[Press Enter To Continue...]")
+        return True
+    elif tries < 8:
+        word_list = []
+        for i in range(len(word)):
+            if word[i].isalpha():
+                word_list.append(word[i])
+        for letter in word_list:
+            if letter not in letters:
+                return False
+        print("YOU WIN!\nThe word(s) was:", word)
+        input("[Press Enter To Continue...]")
+        return True
+    else:
+        return False
 
 
 def main():
+    global tries
     while True:
-        tries = 0
         guessed_letters = []
         level = level_select()
         if level == 5:
             break
         word = get_word(level)
+        clear()
+        print(States.stages[tries])
         while True:
-            turn(word, tries, guessed_letters)
-            if test_win():
-                break
+            turn(word, guessed_letters)
+            if test_win(word, guessed_letters):
+                return
+
+
+tries = 0

@@ -1,0 +1,9 @@
+Things we've done:
+- Chosen a difficulty
+- Chosen a word
+
+Things we need to do:
+- Display states
+- Show progression
+- Take next guess
+- Check for win
