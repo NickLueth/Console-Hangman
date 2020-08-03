@@ -14,7 +14,6 @@ def game():
     Game.main()
 
 
-# Parses for letterless input
 def check_letters(words):
     letters = ""
     for i in range(len(words)):

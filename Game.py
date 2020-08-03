@@ -176,6 +176,7 @@ def main():
         while True:
             turn(word, guessed_letters)
             if test_win(word, guessed_letters):
+                tries = 0
                 return
 
 

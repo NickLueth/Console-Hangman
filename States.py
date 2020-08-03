@@ -1,8 +1,9 @@
 #!/bin/python3
 # Hangman States
 # Created by: Nicholas Lueth
-# Last Edited: 3/4/2020
+# Last Edited: 8/3/2020
 
+# Different stages of the hanging man
 stages = stages = ['''   
                 ________
                 |      |
