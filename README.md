@@ -12,7 +12,8 @@ https://www.python.org/
 5. Take note of the name of your user
 6. If your Console-Hangman-master folder is on your Desktop, type the following command:
 
-`python3 C:\Users\<Your hostname>\Desktop\Console-Hangman-master\Hangman.py`
+`cd C:\Users\<Your hostname>\Desktop\Console-Hangman-master\`
+`python3 Hangman.py`
 
 ## How to play the game on Mac and Linux
 1. Save the Console-Hangman-master.zip
@@ -24,7 +25,8 @@ https://www.python.org/
 https://www.python.org/
 4. If your Console-Hangman-master folder is on your Desktop, type the following command:
 
-`python3 ~/Desktop/Console-Hangman-master/Hangman.py`
+`cd ~/Desktop/Console-Hangman-master/`
+`python3 Hangman.py`
 
 # Warning!
 A few of the words and sentences found in the game are a little inappropriate, so be careful playing around young 
