@@ -183,7 +183,7 @@ def get_word(level):
     # If medium difficulty was selected, assign an medium word(s) to be the word(s) used in the game
     elif level == 2:
         words = get_medium_words()
-        word = words[random.randint(0, len(words)-1)]
+        word = words[random.randint(0, len(words)-1), 0]
         return word
     # If hard difficulty was selected, assign an hard word(s) to be the word(s) used in the game
     elif level == 3:
