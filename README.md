@@ -25,3 +25,7 @@ https://www.python.org/
 4. If your Console-Hangman-master folder is on your Desktop, type the following command:
 <br>
 `python3 ~/Desktop/Console-Hangman-master/Hangman.py`
+
+# Warning!
+A few of the words and sentences found in the game are a little inappropriate, so be careful playing around young 
+children.
