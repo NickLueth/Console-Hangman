@@ -12,6 +12,7 @@ https://www.python.org/
 5. Take note of the name of your user
 6. If your Console-Hangman-master folder is on your Desktop, type the following command:
 <br />
+
 `python3 C:\Users\<Your hostname>\Desktop\Console-Hangman-master\Hangman.py`
 
 ## How to play the game on Mac and Linux
@@ -24,6 +25,7 @@ https://www.python.org/
 https://www.python.org/
 4. If your Console-Hangman-master folder is on your Desktop, type the following command:
 <br />
+
 `python3 ~/Desktop/Console-Hangman-master/Hangman.py`
 
 # Warning!
