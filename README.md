@@ -13,6 +13,7 @@ https://www.python.org/
 6. If your Console-Hangman-master folder is on your Desktop, type the following command:
 
 `cd C:\Users\<Your hostname>\Desktop\Console-Hangman-master\`
+
 `python3 Hangman.py`
 
 ## How to play the game on Mac and Linux
@@ -26,6 +27,7 @@ https://www.python.org/
 4. If your Console-Hangman-master folder is on your Desktop, type the following command:
 
 `cd ~/Desktop/Console-Hangman-master/`
+
 `python3 Hangman.py`
 
 # Warning!
