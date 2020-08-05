@@ -298,7 +298,6 @@ def main():
 
 
 # (str) script_path: is a variable that holds the directory in which the script is running
-script_path = ""
 # Path for windows
 if name == "nt":
     script_path = os.path.dirname(os.path.realpath(__file__)) + "\\"
