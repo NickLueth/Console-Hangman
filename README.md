@@ -16,6 +16,8 @@ https://www.python.org/
 <br />
 Essentially, just type python3 followed by the absolute path of the Hangman.py file.
 
+You can also just right click on Hangman.py and open with python3 if you aren't very technically savvy. 
+
 ## How to play the game on Mac and Linux
 1. Save the Console-Hangman-master.zip
 2. Unzip Console-Hangman-master.zip
