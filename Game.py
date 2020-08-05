@@ -84,6 +84,7 @@ def word_state(word, guessed_letters):
     print()
     # Display all of the currently guessed letters
     print("Guessed letters: ", end="")
+    guessed_letters = sorted(guessed_letters)
     for i in range(len(guessed_letters)):
         print(guessed_letters[i], end=" ")
     print("\n" * 2)
