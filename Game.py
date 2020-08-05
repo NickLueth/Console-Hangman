@@ -5,6 +5,7 @@
 
 import random
 import States
+import os
 from os import system, name
 from time import sleep
 
@@ -107,11 +108,11 @@ def get_easy_words():
     """
     easy_words = []
     # Creates an EasyWords.txt if one does not already exist, then opens the file in append mode
-    file = open("EasyWords.txt", "a+")
+    file = open(script_path + "EasyWords.txt", "a+")
     # Then close the file
     file.close()
     # Increment through the file adding each line to the easy_words list
-    with open("EasyWords.txt") as word_file:
+    with open(script_path + "EasyWords.txt") as word_file:
         for word in word_file:
             easy_words.append(word[:-1])
     return easy_words
@@ -124,11 +125,11 @@ def get_medium_words():
     """
     medium_words = []
     # Creates a MediumWords.txt if one does not already exist, then opens the file in append mode
-    file = open("MediumWords.txt", "a+")
+    file = open(script_path + "MediumWords.txt", "a+")
     # Then close the file
     file.close()
     # Increment through the file adding each line to the medium_words list
-    with open("MediumWords.txt") as word_file:
+    with open(script_path + "MediumWords.txt") as word_file:
         for word in word_file:
             medium_words.append(word[:-1])
     return medium_words
@@ -141,11 +142,11 @@ def get_hard_words():
     """
     hard_words = []
     # Creates a HardWords.txt if one does not already exist, then opens the file in append mode
-    file = open("HardWords.txt", "a+")
+    file = open(script_path + "HardWords.txt", "a+")
     # Then close the file
     file.close()
     # Increment through the file adding each line to the hard_words list
-    with open("HardWords.txt") as word_file:
+    with open(script_path + "HardWords.txt") as word_file:
         for word in word_file:
             hard_words.append(word[:-1])
     return hard_words 
@@ -158,11 +159,11 @@ def get_custom_words():
     """
     custom_words = []
     # Creates a CustomWords.txt if one does not already exist, then opens the file in append mode
-    file = open("CustomWords.txt", "a+")
+    file = open(script_path + "CustomWords.txt", "a+")
     # Then close the file
     file.close()
     # Increment through the file adding each line to the custom_words list
-    with open("CustomWords.txt") as word_file:
+    with open(script_path + "CustomWords.txt") as word_file:
         for word in word_file:
             custom_words.append(word[:-1])
     return custom_words
@@ -286,5 +287,11 @@ def main():
                 return
 
 
+# (str) script_path: is a variable that holds the directory in which the script is running
+script_path = ""
+if name == "nt":
+    script_path = os.path.dirname(os.path.realpath(__file__)) + "\\"
+else:
+    script_path = os.path.dirname(os.path.realpath(__file__)) + "/"
 # (int) tries: is a variable that represents the number of failed guesses a player has made during a game
 tries = 0

@@ -37,7 +37,7 @@ def add_words(c_words):
     :param (list) c_words: A list of strings containing the saved phrases and words already found in CustomWords.txt
     """
     # Open the CustomWords.txt in append mode
-    file = open("CustomWords.txt", "a+")
+    file = open(Game.script_path + "CustomWords.txt", "a+")
     while True:
         Game.clear()
         new_word = input("New word(s): ").lower().strip()
