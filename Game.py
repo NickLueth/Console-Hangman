@@ -1,7 +1,7 @@
 #!/bin/python3
 # Game mechanisms file
 # Created by: Nicholas Lueth
-# Last edited: 8/4/2020
+# Last edited: 8/5/2020
 
 import random
 import States
@@ -29,7 +29,7 @@ def turn(word, guessed_letters):
         elif len(guess) > 1:
             clear()
             print("\"" + guess + "\"", "is more than one character. Please try again.")
-            input("[Press enter to try again...]")
+            input("[PRESS ENTER TO CONTINUE...]")
             clear()
             print(States.stages[tries])
             word_state(word, guessed_letters)
@@ -37,7 +37,7 @@ def turn(word, guessed_letters):
         else:
             clear()
             print("\"" + guess + "\"", "is not a letter. Please try again.")
-            input("[Press enter to try again...]")
+            input("[PRESS ENTER TO CONTINUE...]")
             clear()
             print(States.stages[tries])
             word_state(word, guessed_letters)
@@ -181,21 +181,31 @@ def get_word(level):
         words = get_easy_words()
         word = words[random.randint(0, len(words)-1)]
         return word
-    # If medium difficulty was selected, assign an medium word(s) to be the word(s) used in the game
+    # If medium difficulty was selected, assign a medium word(s) to be the word(s) used in the game
     elif level == 2:
         words = get_medium_words()
         word = words[random.randint(0, len(words)-1)]
         return word
-    # If hard difficulty was selected, assign an hard word(s) to be the word(s) used in the game
+    # If hard difficulty was selected, assign a hard word(s) to be the word(s) used in the game
     elif level == 3:
         words = get_hard_words()
         word = words[random.randint(0, len(words)-1)]
         return word
-    # If custom difficulty was selected, assign an custom word(s) to be the word(s) used in the game
+    # If custom difficulty was selected, assign a custom word(s) to be the word(s) used in the game
     elif level == 4:
-        words = get_custom_words()
-        word = words[random.randint(0, len(words)-1)]
-        return word
+        # If there are no custom words available, give them an easy phrase.
+        if len(get_custom_words()) == 0:
+            clear()
+            print("Oh no!\nYou have not entered any custom word(s).\nFor now you will be given an easy difficulty phrase.")
+            input("[PRESS ENTER TO CONTINUE...]")
+            words = get_easy_words()
+            word = words[random.randint(0, len(words)-1)]
+            return word
+        # If there are custom word(s), assign a custom word(s) to be the word(s) used in the game
+        else:
+            words = get_custom_words()
+            word = words[random.randint(0, len(words)-1)]
+            return word
 
 
 def level_select():
@@ -215,7 +225,7 @@ def level_select():
         except ValueError:
             clear()
             print("INVALID OPTION!\nPlease type a number.")
-            input("PRESS ENTER TO CONTINUE...")
+            input("[PRESS ENTER TO CONTINUE...]")
         # Otherwise, process the user's selection
         else:
             if 0 < level < 6:
@@ -236,7 +246,7 @@ def test_win(word, letters):
     # If the player makes 8 wrong guesses, stop the game, and inform the player that they have lost
     if tries == 8:
         print("YOU LOSE!\nThe word(s) was:", word)
-        input("[Press Enter To Continue...]")
+        input("[PRESS ENTER TO CONTINUE...]")
         return True
     elif tries < 8:
         word_list = []
@@ -251,7 +261,7 @@ def test_win(word, letters):
                 return False
         # If all letters have been guessed, stop the game, and inform the player that they have won
         print("YOU WIN!\nThe word(s) was:", word)
-        input("[Press Enter To Continue...]")
+        input("[PRESS ENTER TO CONTINUE...]")
         return True
 
 
@@ -289,8 +299,10 @@ def main():
 
 # (str) script_path: is a variable that holds the directory in which the script is running
 script_path = ""
+# Path for windows
 if name == "nt":
     script_path = os.path.dirname(os.path.realpath(__file__)) + "\\"
+# Path for unix-based systems
 else:
     script_path = os.path.dirname(os.path.realpath(__file__)) + "/"
 # (int) tries: is a variable that represents the number of failed guesses a player has made during a game
