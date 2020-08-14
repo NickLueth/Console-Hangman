@@ -31,7 +31,3 @@ https://www.python.org/
 `python3 ~/Desktop/Console-Hangman-master/Hangman.py`
 <br />
 Essentially, just type python3 followed by the absolute path of the Hangman.py file.
-
-# Warning!
-A few of the words and sentences found in the game are a little inappropriate, so be careful playing around young 
-children.
