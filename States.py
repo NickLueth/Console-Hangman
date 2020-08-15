@@ -4,7 +4,7 @@
 # Last Edited: 8/4/2020
 
 # Different stages of the hanging man
-stages = stages = ['''   
+stages = ['''   
                 ________
                 |      |
                 |      
